@@ -5,9 +5,16 @@
 
 
 # useful for handling different item types with a single interface
+import logging
 from itemadapter import ItemAdapter
 
 
 class TranscriptscraperPipeline:
+    def open_spider(self, spider):
+        logging.warning("Spider Opened - Pipeline")
+        
+    def close_spider(self, spider):
+        logging.warning("Spider Closed - Pipeline")
+    
     def process_item(self, item, spider):
         return item

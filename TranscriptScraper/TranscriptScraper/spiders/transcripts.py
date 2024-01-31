@@ -25,11 +25,6 @@ class TranscriptsSpider(CrawlSpider):
         return request
 
     def parse_item(self, response):
-        # item = {}
-        #item["domain_id"] = response.xpath('//input[@id="sid"]/@value').get()
-        #item["name"] = response.xpath('//div[@id="name"]').get()
-        #item["description"] = response.xpath('//div[@id="description"]').get()
-        # return item
         article = response.xpath("//article[@class='main-article']")
         yield {
             'title': article.xpath("./h1/text()").get(),
@@ -38,3 +33,9 @@ class TranscriptsSpider(CrawlSpider):
             'url': response.url,
             'user-agent': response.request.headers['User-Agent']
         }
+        
+        # item = {}
+        #item["domain_id"] = response.xpath('//input[@id="sid"]/@value').get()
+        #item["name"] = response.xpath('//div[@id="name"]').get()
+        #item["description"] = response.xpath('//div[@id="description"]').get()
+        # return item
